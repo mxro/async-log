@@ -24,7 +24,7 @@ class TestStringLog {
 	}
 
 	@Test
-	def void test_filled() {
+	def void test_overflow() {
 
 		val log = Logs.create(20)
 
@@ -34,7 +34,7 @@ class TestStringLog {
 		}
 
 		(log.retrieve("log1", StringLog).get.entries.size < 21) => true
-		(log.retrieve("log1", StringLog).get.entries.size > 8) => true
+		(log.retrieve("log1", StringLog).get.entries.size > 21) => true
 
 		log.stop.get
 

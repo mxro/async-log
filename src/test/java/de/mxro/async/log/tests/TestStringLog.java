@@ -38,7 +38,7 @@ public class TestStringLog {
   }
   
   @Test
-  public void test_filled() {
+  public void test_overflow() {
     final PropertyNode log = Logs.create(20);
     IntegerRange _upTo = new IntegerRange(1, 100);
     for (final Integer i : _upTo) {
@@ -55,7 +55,7 @@ public class TestStringLog {
     StringLog _get_1 = _retrieve_1.get();
     List<String> _entries_1 = _get_1.entries();
     int _size_1 = _entries_1.size();
-    boolean _greaterThan = (_size_1 > 8);
+    boolean _greaterThan = (_size_1 > 21);
     TestStringLog.<Boolean, Boolean>operator_doubleArrow(Boolean.valueOf(_greaterThan), Boolean.valueOf(true));
     Promise<Success> _stop = log.stop();
     _stop.get();
