@@ -28,6 +28,10 @@ public class StringLogData implements PropertyValue, Serializable {
             final List<String> oldEntries = this.entries;
             this.entries = new ArrayList<String>(maxCapacity);
 
+            for (final int i = Math.round(oldEntries.size() / 2); i < oldEntries.size(); i++) {
+
+            }
+
         }
 
         entries.add(message);
