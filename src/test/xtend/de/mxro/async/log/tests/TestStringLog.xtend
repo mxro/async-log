@@ -23,4 +23,20 @@ class TestStringLog {
 		
 	}
 	
+	@Test
+	def void test_filled() {
+		
+		val log = Logs.create(20)
+		
+		for (i: 1..100) {
+			log.record(Logs.entry("log1", "entry "+i));
+			
+		}
+		
+		(log.retrieve("log1", StringLog).get.entries.size < 21) => true
+		
+		log.stop.get
+		
+	}
+	
 }
