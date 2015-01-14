@@ -103,7 +103,7 @@ class TestStringLog {
 		t1.join
 
 
-		println(log.retrieve("log1").get)
+		(log.retrieve("log1", StringLog).get.entries.size > 6) => true
 
 		log.stop.get
 
