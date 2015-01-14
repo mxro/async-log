@@ -2,7 +2,9 @@
 
 [Async Log](https://github.com/mxro/async-log) is a minimal implementation for asynchronous logging in Java.
 
-**Why**: To provide a logging implementation works well in multi-threaded environments with minimal performance impact. 
+**Why**: To provide a logging implementation works well in multi-threaded environments with minimal performance impact.
+
+**What Not**: This library is very feature-poor by design to keep it maintainable and portable.  
 
 ## Usage
 
