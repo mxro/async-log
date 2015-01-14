@@ -49,7 +49,7 @@ This results in an output as follows:
 
 ### Preventing Log from Overflowing
 
-By default individual logs are limited to 100 items. If this limit is reached, the olders values will be purged.
+By default individual logs are limited to 100 items. If this limit is reached, the oldest values will be purged.
 
 A custom limit can be set by passing an integer to the logs constructor method:
 
