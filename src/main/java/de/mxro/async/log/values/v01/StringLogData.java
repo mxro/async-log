@@ -11,7 +11,7 @@ public class StringLogData implements PropertyValue, Serializable {
     private static final long serialVersionUID = 1L;
 
     private final int maxCapacity;
-    private final List<String> entries;
+    private List<String> entries;
 
     @Override
     public boolean is(final Class<?> type) {
@@ -25,6 +25,8 @@ public class StringLogData implements PropertyValue, Serializable {
 
     public void add(final String message) {
         if (entries.size() > maxCapacity) {
+            final List<String> oldEntries = this.entries;
+            this.entries = new ArrayList<String>(maxCapacity);
 
         }
 
