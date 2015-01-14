@@ -27,6 +27,8 @@ public class StringLogData implements PropertyValue, Serializable {
         if (entries.size() > maxCapacity) {
 
         }
+
+        entries.add(message);
     }
 
     public StringLogData(final int maxCapacity) {
