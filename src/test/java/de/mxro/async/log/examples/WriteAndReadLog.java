@@ -10,8 +10,8 @@ public class WriteAndReadLog {
 
         final PropertyNode logs = Logs.create();
 
-        logs.record(Logs.entry("log1", "entry 1"));
-        logs.record(Logs.entry("log1", "entry 2"));
+        logs.record(Logs.string("log1", "entry 1"));
+        logs.record(Logs.string("log1", "entry 2"));
 
         final String log1 = logs.retrieve("log1", StringLog.class).get().toString();
 

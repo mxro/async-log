@@ -13,9 +13,9 @@ class TestStringLog {
 
 		val log = Logs.create
 
-		log.record(Logs.entry("log1", "entry 1"));
-		log.record(Logs.entry("log1", "entry 2"));
-		log.record(Logs.entry("log1", "entry 3"));
+		log.record(Logs.string("log1", "entry 1"));
+		log.record(Logs.string("log1", "entry 2"));
+		log.record(Logs.string("log1", "entry 3"));
 
 		log.retrieve("log1", StringLog).get.entries.size => 3
 
@@ -29,7 +29,7 @@ class TestStringLog {
 		val log = Logs.create(20)
 
 		for (i : 1 .. 100) {
-			log.record(Logs.entry("log1", "entry " + i));
+			log.record(Logs.string("log1", "entry " + i));
 
 		}
 
@@ -48,7 +48,7 @@ class TestStringLog {
 
 			override run() {
 				for (i : 1 .. 20) {
-					log.record(Logs.entry("log1", "t1 entry " + i));
+					log.record(Logs.string("log1", "t1 entry " + i));
 					Thread.sleep(1)
 					Thread.yield()
 				}
@@ -60,7 +60,7 @@ class TestStringLog {
 
 			override run() {
 				for (i : 1 .. 20) {
-					log.record(Logs.entry("log1", "t2 entry " + i));
+					log.record(Logs.string("log1", "t2 entry " + i));
 					Thread.sleep(1)
 					Thread.yield()
 				}
@@ -72,7 +72,7 @@ class TestStringLog {
 
 			override run() {
 				for (i : 1 .. 20) {
-					log.record(Logs.entry("log1", "t3 entry " + i));
+					log.record(Logs.string("log1", "t3 entry " + i));
 					Thread.sleep(1)
 					Thread.yield()
 				}

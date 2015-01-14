@@ -4,13 +4,20 @@
 
 ## Usage
 
+### Creating a Log Repository
+
+
+
+**Note**: Before the application terminates `logs.stop().get();' should always be called to ascertain that
+the thread used by the logging node is released.
+
 ### Log a Text Entry
 
 ```java
 PropertyNode logs = Logs.create();
 
-logs.record(Logs.entry("log1", "entry 1"));
-logs.record(Logs.entry("log1", "entry 2"));
+logs.record(Logs.string("log1", "entry 1"));
+logs.record(Logs.string("log1", "entry 2"));
 ``` 
 
 ### Retrieving Logged Entries
@@ -21,14 +28,13 @@ The log written in the previous example can be retrieved as follows:
 String log1 = logs.retrieve("log1", StringLog.class).get().toString();
 
 System.out.println(log1);
-
-logs.stop().get();
 ```
 
-**Note**: Before the application terminates `logs.stop().get();' should always be called to ascertain that
-the thread used by the logging node is released.
+
 
 ### Preventing Log from Overflowing
+
+Creating a=
 
 ### Maven Dependency
 
