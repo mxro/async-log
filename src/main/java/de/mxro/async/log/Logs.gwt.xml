@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module rename-to='logs'>
+	
+	<inherits name='de.mxro.async.properties.Properties' />
+
+	<!-- Specify the paths for translatable code -->
+	<source path=''>
+		<exclude name="**/jre/**" />
+	</source>
+
+</module>
