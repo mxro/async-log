@@ -48,7 +48,7 @@ public class StringLogData implements PropertyValue, Serializable, StringLog, To
     }
 
     @Override
-    public JSON getJSON() {
+    public JSON toJSON() {
         final JSONArray o = JSON.createArray();
 
         for (int i = entries.size() - 1; i >= 0; i--) {
@@ -60,7 +60,7 @@ public class StringLogData implements PropertyValue, Serializable, StringLog, To
 
     @Override
     public String toString() {
-        return getJSON().render();
+        return toJSON().render();
     }
 
 }
