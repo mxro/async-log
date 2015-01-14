@@ -38,6 +38,10 @@ public class LogsCommon extends PropertiesCommon {
         return new WriteEntryOperation(message).setId(id);
     }
 
+    public static PropertyOperation<String> string(final Object context, final String message) {
+        return string(context.getClass().getSimpleName() + ":" + System.identityHashCode(context), message);
+    }
+
     public static Factory<?, ?, ?> createUnsafeLogsFactory() {
         return new Factory<PropertyNode, LogsConfiguration, Dependencies>() {
 
