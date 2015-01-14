@@ -16,13 +16,13 @@ import de.mxro.async.properties.PropertyOperation;
  */
 public class LogsCommon extends PropertiesCommon {
 
-    public static PropertyNode create() {
+    public static PropertyNode createUnsafe() {
         final int defaultMaxCapacity = 40;
         return PropertiesCommon.createUnsafe(PropertiesCommon.compositeFactory(PropertiesCommon.defaultFactory(),
                 logFactory(defaultMaxCapacity)));
     }
 
-    public static PropertyNode create(final int defaultMaxCapacity) {
+    public static PropertyNode createUnsafe(final int defaultMaxCapacity) {
         return PropertiesCommon.createUnsafe(PropertiesCommon.compositeFactory(PropertiesCommon.defaultFactory(),
                 logFactory(defaultMaxCapacity)));
     }

@@ -26,7 +26,7 @@ class TestStringLog {
 	@Test
 	def void test_overflow() {
 
-		val log = Logs.create(20)
+		val log = Logs.createUnsafe(20)
 
 		for (i : 1 .. 100) {
 			log.record(Logs.string("log1", "entry " + i));
@@ -43,7 +43,7 @@ class TestStringLog {
 	@Test
 	def void test_multithreading() {
 
-		val log = Logs.create(18)
+		val log = Logs.createUnsafe(18)
 
 		val t1 = new Thread() {
 
