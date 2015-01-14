@@ -1,8 +1,9 @@
 package de.mxro.async.log.tests
 
+import de.mxro.async.log.jre.Logs
+import de.mxro.async.log.values.StringLog
 import de.oehme.xtend.junit.JUnit
 import org.junit.Test
-import de.mxro.async.log.jre.Logs
 
 @JUnit
 class TestStringLog {
@@ -16,8 +17,7 @@ class TestStringLog {
 		log.record(Logs.entry("log1", "entry 2"));
 		log.record(Logs.entry("log1", "entry 3"));
 		
-		
-		log.retrieve("log1")
+		log.retrieve("log1", StringLog).get.entries.size => 3
 		
 		log.stop.get
 		

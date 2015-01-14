@@ -1,11 +1,13 @@
 package de.mxro.async.log.tests;
 
 import de.mxro.async.log.jre.Logs;
+import de.mxro.async.log.values.StringLog;
 import de.mxro.async.properties.PropertyNode;
 import de.mxro.async.properties.PropertyOperation;
 import de.mxro.fn.Success;
 import de.mxro.promise.Promise;
 import de.oehme.xtend.junit.JUnit;
+import java.util.List;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure0;
 import org.hamcrest.Matcher;
 import org.junit.Assert;
@@ -24,7 +26,11 @@ public class TestStringLog {
     log.record(_entry_1);
     PropertyOperation _entry_2 = Logs.entry("log1", "entry 3");
     log.record(_entry_2);
-    log.retrieve("log1");
+    Promise<StringLog> _retrieve = log.<StringLog>retrieve("log1", StringLog.class);
+    StringLog _get = _retrieve.get();
+    List<String> _entries = _get.entries();
+    int _size = _entries.size();
+    TestStringLog.<Integer, Integer>operator_doubleArrow(Integer.valueOf(_size), Integer.valueOf(3));
     Promise<Success> _stop = log.stop();
     _stop.get();
   }
