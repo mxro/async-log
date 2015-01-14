@@ -6,11 +6,11 @@ import java.util.List;
 
 import de.mxro.async.log.values.StringLog;
 import de.mxro.async.properties.values.PropertyValue;
-import de.mxro.json.HasJSON;
+import de.mxro.json.ToJSON;
 import de.mxro.json.JSON;
 import de.mxro.json.JSONArray;
 
-public class StringLogData implements PropertyValue, Serializable, StringLog, HasJSON {
+public class StringLogData implements PropertyValue, Serializable, StringLog, ToJSON {
 
     private static final long serialVersionUID = 1L;
 
