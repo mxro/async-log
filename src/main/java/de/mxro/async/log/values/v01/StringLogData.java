@@ -57,4 +57,10 @@ public class StringLogData implements PropertyValue, Serializable, StringLog, Ha
 
         return o;
     }
+
+    @Override
+    public String toString() {
+        return getJSON().render();
+    }
+
 }

@@ -42,7 +42,7 @@ class TestStringLog {
 	@Test
 	def void test_multithreading() {
 
-		val log = Logs.create(19)
+		val log = Logs.create(18)
 
 		val t1 = new Thread() {
 

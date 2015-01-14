@@ -59,7 +59,7 @@ public class TestStringLog {
   @Test
   public void test_multithreading() {
     try {
-      final PropertyNode log = Logs.create(19);
+      final PropertyNode log = Logs.create(18);
       final Thread t1 = new Thread() {
         public void run() {
           try {
