@@ -4,8 +4,11 @@ import de.mxro.async.properties.PropertyFactory;
 
 public class LogFactory implements PropertyFactory {
 
+    private final int defaultMaxCapacity;
+
     public LogFactory(final int defaultMaxCapacity) {
-        // TODO Auto-generated constructor stub
+        super();
+        this.defaultMaxCapacity = defaultMaxCapacity;
     }
 
     @Override

@@ -6,7 +6,7 @@ import java.util.List;
 
 import de.mxro.async.properties.values.PropertyValue;
 
-public class LogData implements PropertyValue, Serializable {
+public class StringLogData implements PropertyValue, Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -27,7 +27,7 @@ public class LogData implements PropertyValue, Serializable {
 
     }
 
-    public LogData(final int maxCapacity) {
+    public StringLogData(final int maxCapacity) {
         super();
         this.maxCapacity = maxCapacity;
         this.entries = new ArrayList<String>(maxCapacity);
