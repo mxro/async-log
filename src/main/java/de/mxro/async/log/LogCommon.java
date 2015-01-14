@@ -1,6 +1,7 @@
 package de.mxro.async.log;
 
 import de.mxro.async.log.internal.LogFactory;
+import de.mxro.async.log.internal.operations.WriteEntryOperation;
 import de.mxro.async.properties.PropertiesCommon;
 import de.mxro.async.properties.PropertyFactory;
 import de.mxro.async.properties.PropertyNode;
@@ -24,8 +25,8 @@ public class LogCommon extends PropertiesCommon {
         return new LogFactory();
     }
 
-    public PropertyOperation entry(final String message) {
-
+    public PropertyOperation entry(final String id, final String message) {
+        return new WriteEntryOperation(message).setId(id);
     }
 
 }
