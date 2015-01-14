@@ -50,7 +50,7 @@ public class LogsCommon extends PropertiesCommon {
             @Override
             public PropertyNode create(final Configuration conf, final Dependencies dependencies) {
 
-                return LogsCommon.createUnsafe(defaultFactory());
+                return LogsCommon.createUnsafe();
             }
 
         };
