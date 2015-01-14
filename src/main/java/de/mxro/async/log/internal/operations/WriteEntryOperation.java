@@ -4,14 +4,16 @@ import de.mxro.async.log.values.StringLog;
 import de.mxro.async.properties.PropertyData;
 import de.mxro.async.properties.operations.PropertyOperationWithId;
 
-public class WriteEntryOperation extends PropertyOperationWithId {
+public class WriteEntryOperation extends PropertyOperationWithId<String> {
 
     private final String message;
 
     @Override
-    public void perform(final PropertyData data) {
+    public String perform(final PropertyData data) {
 
         data.get(id, StringLog.class).add(message);
+
+        return message;
 
     }
 
