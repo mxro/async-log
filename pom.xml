@@ -12,7 +12,7 @@
 			org.junit,
 			*
 		</module.importedPackages>
-		<module.exportedPackages>!de.mxro.metrics.internal*,de.mxro.metrics*
+		<module.exportedPackages>!de.mxro.async.log.internal*,de.mxro.async.log*
 		</module.exportedPackages>
 		<module.serviceDefinitions>
 		</module.serviceDefinitions>
@@ -337,9 +337,9 @@
 	</developers>
 
 	<scm>
-		<connection>scm:git:git@github.com:mxro/lightweight-java-metrics.git</connection>
-		<url>https://github.com/mxro/lightweight-java-metrics</url>
-		<developerConnection>scm:git:git@github.com:mxro/lightweight-java-metrics.git
+		<connection>scm:git:git@github.com:mxro/async-log.git</connection>
+		<url>https://github.com/mxro/async-log</url>
+		<developerConnection>scm:git:git@github.com:mxro/async-log.git
 		</developerConnection>
 	</scm>
 
