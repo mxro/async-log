@@ -103,6 +103,7 @@ class TestStringLog {
 		t2.join
 		t1.join()
 
+		(log.retrieve("log1", StringLog).get.entries.size < 20) => true
 		(log.retrieve("log1", StringLog).get.entries.size > 5) => true
 
 		log.stop.get

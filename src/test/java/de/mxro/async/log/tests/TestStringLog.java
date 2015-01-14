@@ -149,7 +149,13 @@ public class TestStringLog {
       StringLog _get = _retrieve.get();
       List<String> _entries = _get.entries();
       int _size = _entries.size();
-      boolean _greaterThan = (_size > 5);
+      boolean _lessThan = (_size < 20);
+      TestStringLog.<Boolean, Boolean>operator_doubleArrow(Boolean.valueOf(_lessThan), Boolean.valueOf(true));
+      Promise<StringLog> _retrieve_1 = log.<StringLog>retrieve("log1", StringLog.class);
+      StringLog _get_1 = _retrieve_1.get();
+      List<String> _entries_1 = _get_1.entries();
+      int _size_1 = _entries_1.size();
+      boolean _greaterThan = (_size_1 > 5);
       TestStringLog.<Boolean, Boolean>operator_doubleArrow(Boolean.valueOf(_greaterThan), Boolean.valueOf(true));
       Promise<Success> _stop = log.stop();
       _stop.get();
