@@ -39,7 +39,7 @@ public class LogsCommon extends PropertiesCommon {
     }
 
     public static Factory<?, ?, ?> createUnsafeLogsFactory() {
-        return new Factory<PropertyNode, Configuration, Dependencies>() {
+        return new Factory<PropertyNode, LogsConfiguration, Dependencies>() {
 
             @Override
             public boolean canInstantiate(final Configuration conf) {
@@ -48,9 +48,9 @@ public class LogsCommon extends PropertiesCommon {
             }
 
             @Override
-            public PropertyNode create(final Configuration conf, final Dependencies dependencies) {
+            public PropertyNode create(final LogsConfiguration conf, final Dependencies dependencies) {
 
-                return LogsCommon.createUnsafe();
+                return LogsCommon.createUnsafe(conf.getMaxCapacity());
             }
 
         };
