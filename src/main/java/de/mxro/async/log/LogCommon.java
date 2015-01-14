@@ -31,7 +31,7 @@ public class LogCommon extends PropertiesCommon {
         return new LogFactory(defaultMaxCapacity);
     }
 
-    public PropertyOperation entry(final String id, final String message) {
+    public static PropertyOperation entry(final String id, final String message) {
         return new WriteEntryOperation(message).setId(id);
     }
 

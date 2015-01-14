@@ -12,6 +12,8 @@ import org.junit.internal.ArrayComparisonFailure;
 public class TestStringLog {
   @Test
   public void test() {
+    throw new Error("Unresolved compilation problems:"
+      + "\nInvalid number of arguments. The method entry(String, String) is not applicable for the arguments (String)");
   }
   
   private static void assertArrayEquals(final Object[] expecteds, final Object[] actuals) {
