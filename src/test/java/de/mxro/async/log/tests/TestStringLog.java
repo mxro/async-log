@@ -8,6 +8,7 @@ import de.mxro.fn.Success;
 import de.mxro.promise.Promise;
 import de.oehme.xtend.junit.JUnit;
 import java.util.List;
+import org.eclipse.xtext.xbase.lib.Exceptions;
 import org.eclipse.xtext.xbase.lib.IntegerRange;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure0;
 import org.hamcrest.Matcher;
@@ -52,6 +53,97 @@ public class TestStringLog {
     TestStringLog.<Boolean, Boolean>operator_doubleArrow(Boolean.valueOf(_lessThan), Boolean.valueOf(true));
     Promise<Success> _stop = log.stop();
     _stop.get();
+  }
+  
+  @Test
+  public void test_multithreading() {
+    try {
+      final PropertyNode log = Logs.create(20);
+      final Thread t1 = new Thread() {
+        public void run() {
+          try {
+            IntegerRange _upTo = new IntegerRange(1, 20);
+            for (final Integer i : _upTo) {
+              {
+                PropertyOperation _entry = Logs.entry("log1", ("t1 entry " + i));
+                log.record(_entry);
+                Thread.sleep(1);
+                Thread.yield();
+              }
+            }
+          } catch (Throwable _e) {
+            throw Exceptions.sneakyThrow(_e);
+          }
+        }
+      };
+      final Thread t2 = new Thread() {
+        public void run() {
+          try {
+            IntegerRange _upTo = new IntegerRange(1, 20);
+            for (final Integer i : _upTo) {
+              {
+                PropertyOperation _entry = Logs.entry("log1", ("t2 entry " + i));
+                log.record(_entry);
+                Thread.sleep(1);
+                Thread.yield();
+              }
+            }
+          } catch (Throwable _e) {
+            throw Exceptions.sneakyThrow(_e);
+          }
+        }
+      };
+      final Thread t3 = new Thread() {
+        public void run() {
+          try {
+            IntegerRange _upTo = new IntegerRange(1, 20);
+            for (final Integer i : _upTo) {
+              {
+                PropertyOperation _entry = Logs.entry("log1", ("t3 entry " + i));
+                log.record(_entry);
+                Thread.sleep(1);
+                Thread.yield();
+              }
+            }
+          } catch (Throwable _e) {
+            throw Exceptions.sneakyThrow(_e);
+          }
+        }
+      };
+      final Thread retrievet = new Thread() {
+        public void run() {
+          try {
+            IntegerRange _upTo = new IntegerRange(1, 10);
+            for (final Integer i : _upTo) {
+              {
+                Promise<StringLog> _retrieve = log.<StringLog>retrieve("log1", StringLog.class);
+                StringLog _get = _retrieve.get();
+                List<String> _entries = _get.entries();
+                int _size = _entries.size();
+                boolean _lessThan = (_size < 21);
+                TestStringLog.<Boolean, Boolean>operator_doubleArrow(Boolean.valueOf(_lessThan), Boolean.valueOf(true));
+                Thread.sleep(2);
+                Thread.yield();
+              }
+            }
+          } catch (Throwable _e) {
+            throw Exceptions.sneakyThrow(_e);
+          }
+        }
+      };
+      t1.start();
+      t2.start();
+      t3.start();
+      retrievet.start();
+      retrievet.join();
+      t2.join();
+      t2.join();
+      t1.join();
+      Promise<Success> _stop = log.stop();
+      _stop.get();
+    } catch (Throwable _e) {
+      throw Exceptions.sneakyThrow(_e);
+    }
   }
   
   private static void assertArrayEquals(final Object[] expecteds, final Object[] actuals) {
