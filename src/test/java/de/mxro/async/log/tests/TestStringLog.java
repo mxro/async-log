@@ -1,5 +1,10 @@
 package de.mxro.async.log.tests;
 
+import de.mxro.async.log.jre.Log;
+import de.mxro.async.properties.PropertyNode;
+import de.mxro.async.properties.PropertyOperation;
+import de.mxro.fn.Success;
+import de.mxro.promise.Promise;
 import de.oehme.xtend.junit.JUnit;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure0;
 import org.hamcrest.Matcher;
@@ -12,8 +17,12 @@ import org.junit.internal.ArrayComparisonFailure;
 public class TestStringLog {
   @Test
   public void test() {
-    throw new Error("Unresolved compilation problems:"
-      + "\nInvalid number of arguments. The method entry(String, String) is not applicable for the arguments (String)");
+    final PropertyNode log = Log.create();
+    PropertyOperation _entry = Log.entry("log1", "123");
+    log.record(_entry);
+    log.print();
+    Promise<Success> _stop = log.stop();
+    _stop.get();
   }
   
   private static void assertArrayEquals(final Object[] expecteds, final Object[] actuals) {

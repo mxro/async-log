@@ -12,7 +12,12 @@ class TestStringLog {
 		
 		val log = Log.create
 		
-		log.record(Log.entry("123"));
+		log.record(Log.entry("log1", "123"));
+		
+		
+		log.print
+		
+		log.stop.get
 		
 	}
 	
