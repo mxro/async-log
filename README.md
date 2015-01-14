@@ -6,23 +6,31 @@
 
 ### Creating a Log Repository
 
-
-
-**Note**: Before the application terminates `logs.stop().get();' should always be called to ascertain that
-the thread used by the logging node is released.
-
-### Log a Text Entry
+All logs are held in a log repository which can be created as follows.
 
 ```java
 PropertyNode logs = Logs.create();
+```
 
+**Note**: Before the application terminates the log repository should always be finalized as follows to ascertain that
+the thread used by the logging node is released.
+
+```java
+logs.stop().get();
+```
+
+### Log a Text Entry
+
+The following will log a number of simple Strings.
+
+```java
 logs.record(Logs.string("log1", "entry 1"));
 logs.record(Logs.string("log1", "entry 2"));
 ``` 
 
 ### Retrieving Logged Entries
 
-The log written in the previous example can be retrieved as follows:
+The entries written in the previous example can be retrieved as follows:
 
 ```java
 String log1 = logs.retrieve("log1", StringLog.class).get().toString();
@@ -30,11 +38,24 @@ String log1 = logs.retrieve("log1", StringLog.class).get().toString();
 System.out.println(log1);
 ```
 
+This results in an output as follows:
 
+```
+[
+    'entry1',
+    'entry1'
+]
+```
 
 ### Preventing Log from Overflowing
 
-Creating a=
+By default individual logs are limited to 100 items. If this limit is reached, the olders values will be purged.
+
+A custom limit can be set by passing an integer to the logs constructor method:
+
+```java
+PropertyNode limitedLog = Logs.create(20);
+```
 
 ### Maven Dependency
 
