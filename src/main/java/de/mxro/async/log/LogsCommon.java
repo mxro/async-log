@@ -14,7 +14,7 @@ import de.mxro.async.properties.PropertyOperation;
  * @author <a href="http://www.mxro.de">Max Rohde</a>
  *
  */
-public class LogCommon extends PropertiesCommon {
+public class LogsCommon extends PropertiesCommon {
 
     public static PropertyNode create() {
         final int defaultMaxCapacity = 20;

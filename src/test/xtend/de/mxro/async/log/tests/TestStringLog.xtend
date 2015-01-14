@@ -1,8 +1,8 @@
 package de.mxro.async.log.tests
 
-import de.mxro.async.log.jre.Log
 import de.oehme.xtend.junit.JUnit
 import org.junit.Test
+import de.mxro.async.log.jre.Logs
 
 @JUnit
 class TestStringLog {
@@ -10,12 +10,14 @@ class TestStringLog {
 	@Test
 	def void test() {
 		
-		val log = Log.create
+		val log = Logs.create
 		
-		log.record(Log.entry("log1", "123"));
+		log.record(Logs.entry("log1", "entry 1"));
+		log.record(Logs.entry("log1", "entry 2"));
+		log.record(Logs.entry("log1", "entry 3"));
 		
 		
-		log.print
+		log.retrieve("log1")
 		
 		log.stop.get
 		

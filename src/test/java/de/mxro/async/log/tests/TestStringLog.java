@@ -1,6 +1,6 @@
 package de.mxro.async.log.tests;
 
-import de.mxro.async.log.jre.Log;
+import de.mxro.async.log.jre.Logs;
 import de.mxro.async.properties.PropertyNode;
 import de.mxro.async.properties.PropertyOperation;
 import de.mxro.fn.Success;
@@ -17,10 +17,14 @@ import org.junit.internal.ArrayComparisonFailure;
 public class TestStringLog {
   @Test
   public void test() {
-    final PropertyNode log = Log.create();
-    PropertyOperation _entry = Log.entry("log1", "123");
+    final PropertyNode log = Logs.create();
+    PropertyOperation _entry = Logs.entry("log1", "entry 1");
     log.record(_entry);
-    log.print();
+    PropertyOperation _entry_1 = Logs.entry("log1", "entry 2");
+    log.record(_entry_1);
+    PropertyOperation _entry_2 = Logs.entry("log1", "entry 3");
+    log.record(_entry_2);
+    log.retrieve("log1");
     Promise<Success> _stop = log.stop();
     _stop.get();
   }
