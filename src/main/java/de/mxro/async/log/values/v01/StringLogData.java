@@ -5,12 +5,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 import de.mxro.async.log.values.StringLog;
-import de.mxro.async.properties.values.PropertyValue;
+import de.mxro.async.properties.values.ExplicitInstanceOf;
 import de.mxro.json.ToJSON;
 import de.mxro.json.JSON;
 import de.mxro.json.JSONArray;
 
-public class StringLogData implements PropertyValue, Serializable, StringLog, ToJSON {
+public class StringLogData implements ExplicitInstanceOf, Serializable, StringLog, ToJSON {
 
     private static final long serialVersionUID = 1L;
 
