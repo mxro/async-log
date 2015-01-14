@@ -1,15 +1,6 @@
 package de.mxro.async.log.tests;
 
-import de.mxro.async.log.jre.Logs;
-import de.mxro.async.log.values.StringLog;
-import de.mxro.async.properties.PropertyNode;
-import de.mxro.async.properties.PropertyOperation;
-import de.mxro.fn.Success;
-import de.mxro.promise.Promise;
 import de.oehme.xtend.junit.JUnit;
-import java.util.List;
-import org.eclipse.xtext.xbase.lib.Exceptions;
-import org.eclipse.xtext.xbase.lib.IntegerRange;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure0;
 import org.hamcrest.Matcher;
 import org.junit.Assert;
@@ -21,147 +12,74 @@ import org.junit.internal.ArrayComparisonFailure;
 public class TestStringLog {
   @Test
   public void test() {
-    final PropertyNode log = Logs.create();
-    PropertyOperation<String> _string = Logs.string("log1", "entry 1");
-    log.<String>record(_string);
-    PropertyOperation<String> _string_1 = Logs.string("log1", "entry 2");
-    log.<String>record(_string_1);
-    PropertyOperation<String> _string_2 = Logs.string("log1", "entry 3");
-    log.<String>record(_string_2);
-    Promise<StringLog> _retrieve = log.<StringLog>retrieve("log1", StringLog.class);
-    StringLog _get = _retrieve.get();
-    List<String> _entries = _get.entries();
-    int _size = _entries.size();
-    TestStringLog.<Integer, Integer>operator_doubleArrow(Integer.valueOf(_size), Integer.valueOf(3));
-    Promise<Success> _stop = log.stop();
-    _stop.get();
+    throw new Error("Unresolved compilation problems:"
+      + "\nThe method record is undefined for the type TestStringLog"
+      + "\nThe method record is undefined for the type TestStringLog"
+      + "\nThe method record is undefined for the type TestStringLog"
+      + "\nThe method get is undefined for the type TestStringLog"
+      + "\nThe method get is undefined for the type TestStringLog"
+      + "\nInvalid number of arguments. The method stop(ValueCallback<Success>) is not applicable without arguments"
+      + "\nType mismatch: cannot convert from Class<StringLog> to ValueCallback<Object>"
+      + "\nType mismatch: type void is not applicable at this location"
+      + "\nType mismatch: type void is not applicable at this location"
+      + "\nentries cannot be resolved"
+      + "\nsize cannot be resolved"
+      + "\n=> cannot be resolved");
   }
   
   @Test
   public void test_overflow() {
-    final PropertyNode log = Logs.create(20);
-    IntegerRange _upTo = new IntegerRange(1, 100);
-    for (final Integer i : _upTo) {
-      PropertyOperation<String> _string = Logs.string("log1", ("entry " + i));
-      log.<String>record(_string);
-    }
-    Promise<StringLog> _retrieve = log.<StringLog>retrieve("log1", StringLog.class);
-    StringLog _get = _retrieve.get();
-    List<String> _entries = _get.entries();
-    int _size = _entries.size();
-    boolean _lessThan = (_size < 21);
-    TestStringLog.<Boolean, Boolean>operator_doubleArrow(Boolean.valueOf(_lessThan), Boolean.valueOf(true));
-    Promise<StringLog> _retrieve_1 = log.<StringLog>retrieve("log1", StringLog.class);
-    StringLog _get_1 = _retrieve_1.get();
-    List<String> _entries_1 = _get_1.entries();
-    int _size_1 = _entries_1.size();
-    boolean _greaterThan = (_size_1 > 8);
-    TestStringLog.<Boolean, Boolean>operator_doubleArrow(Boolean.valueOf(_greaterThan), Boolean.valueOf(true));
-    Promise<Success> _stop = log.stop();
-    _stop.get();
+    throw new Error("Unresolved compilation problems:"
+      + "\nThe method record is undefined for the type TestStringLog"
+      + "\nThe method get is undefined for the type TestStringLog"
+      + "\nThe method get is undefined for the type TestStringLog"
+      + "\nThe method get is undefined for the type TestStringLog"
+      + "\nInvalid number of arguments. The method stop(ValueCallback<Success>) is not applicable without arguments"
+      + "\nType mismatch: cannot convert from Class<StringLog> to ValueCallback<Object>"
+      + "\nType mismatch: type void is not applicable at this location"
+      + "\nType mismatch: cannot convert from Class<StringLog> to ValueCallback<Object>"
+      + "\nType mismatch: type void is not applicable at this location"
+      + "\nType mismatch: type void is not applicable at this location"
+      + "\nentries cannot be resolved"
+      + "\nsize cannot be resolved"
+      + "\n< cannot be resolved"
+      + "\n=> cannot be resolved"
+      + "\nentries cannot be resolved"
+      + "\nsize cannot be resolved"
+      + "\n> cannot be resolved"
+      + "\n=> cannot be resolved");
   }
   
   @Test
   public void test_multithreading() {
-    try {
-      final PropertyNode log = Logs.create(18);
-      final Thread t1 = new Thread() {
-        public void run() {
-          try {
-            IntegerRange _upTo = new IntegerRange(1, 20);
-            for (final Integer i : _upTo) {
-              {
-                PropertyOperation<String> _string = Logs.string("log1", ("t1 entry " + i));
-                log.<String>record(_string);
-                Thread.sleep(1);
-                Thread.yield();
-              }
-            }
-          } catch (Throwable _e) {
-            throw Exceptions.sneakyThrow(_e);
-          }
-        }
-      };
-      final Thread t2 = new Thread() {
-        public void run() {
-          try {
-            IntegerRange _upTo = new IntegerRange(1, 20);
-            for (final Integer i : _upTo) {
-              {
-                PropertyOperation<String> _string = Logs.string("log1", ("t2 entry " + i));
-                log.<String>record(_string);
-                Thread.sleep(1);
-                Thread.yield();
-              }
-            }
-          } catch (Throwable _e) {
-            throw Exceptions.sneakyThrow(_e);
-          }
-        }
-      };
-      final Thread t3 = new Thread() {
-        public void run() {
-          try {
-            IntegerRange _upTo = new IntegerRange(1, 20);
-            for (final Integer i : _upTo) {
-              {
-                PropertyOperation<String> _string = Logs.string("log1", ("t3 entry " + i));
-                log.<String>record(_string);
-                Thread.sleep(1);
-                Thread.yield();
-              }
-            }
-          } catch (Throwable _e) {
-            throw Exceptions.sneakyThrow(_e);
-          }
-        }
-      };
-      final Thread retrievet = new Thread() {
-        public void run() {
-          try {
-            IntegerRange _upTo = new IntegerRange(1, 10);
-            for (final Integer i : _upTo) {
-              {
-                Promise<StringLog> _retrieve = log.<StringLog>retrieve("log1", StringLog.class);
-                StringLog _get = _retrieve.get();
-                List<String> _entries = _get.entries();
-                int _size = _entries.size();
-                boolean _lessThan = (_size < 21);
-                TestStringLog.<Boolean, Boolean>operator_doubleArrow(Boolean.valueOf(_lessThan), Boolean.valueOf(true));
-                Thread.sleep(2);
-                Thread.yield();
-              }
-            }
-          } catch (Throwable _e) {
-            throw Exceptions.sneakyThrow(_e);
-          }
-        }
-      };
-      t1.start();
-      t2.start();
-      t3.start();
-      retrievet.start();
-      retrievet.join();
-      t2.join();
-      t2.join();
-      t1.join();
-      Promise<StringLog> _retrieve = log.<StringLog>retrieve("log1", StringLog.class);
-      StringLog _get = _retrieve.get();
-      List<String> _entries = _get.entries();
-      int _size = _entries.size();
-      boolean _lessThan = (_size < 20);
-      TestStringLog.<Boolean, Boolean>operator_doubleArrow(Boolean.valueOf(_lessThan), Boolean.valueOf(true));
-      Promise<StringLog> _retrieve_1 = log.<StringLog>retrieve("log1", StringLog.class);
-      StringLog _get_1 = _retrieve_1.get();
-      List<String> _entries_1 = _get_1.entries();
-      int _size_1 = _entries_1.size();
-      boolean _greaterThan = (_size_1 > 5);
-      TestStringLog.<Boolean, Boolean>operator_doubleArrow(Boolean.valueOf(_greaterThan), Boolean.valueOf(true));
-      Promise<Success> _stop = log.stop();
-      _stop.get();
-    } catch (Throwable _e) {
-      throw Exceptions.sneakyThrow(_e);
-    }
+    throw new Error("Unresolved compilation problems:"
+      + "\nThe method get is undefined for the type TestStringLog"
+      + "\nThe method get is undefined for the type TestStringLog"
+      + "\nThe method get is undefined for the type TestStringLog"
+      + "\nThe method record is undefined for the type null"
+      + "\nThe method record is undefined for the type null"
+      + "\nThe method record is undefined for the type null"
+      + "\nThe method get is undefined for the type null"
+      + "\nInvalid number of arguments. The method stop(ValueCallback<Success>) is not applicable without arguments"
+      + "\nType mismatch: cannot convert from Class<StringLog> to ValueCallback<Object>"
+      + "\nType mismatch: type void is not applicable at this location"
+      + "\nType mismatch: cannot convert from Class<StringLog> to ValueCallback<Object>"
+      + "\nType mismatch: type void is not applicable at this location"
+      + "\nType mismatch: type void is not applicable at this location"
+      + "\nType mismatch: cannot convert from Class<StringLog> to ValueCallback<Object>"
+      + "\nType mismatch: type void is not applicable at this location"
+      + "\nentries cannot be resolved"
+      + "\nsize cannot be resolved"
+      + "\n< cannot be resolved"
+      + "\n=> cannot be resolved"
+      + "\nentries cannot be resolved"
+      + "\nsize cannot be resolved"
+      + "\n> cannot be resolved"
+      + "\n=> cannot be resolved"
+      + "\nentries cannot be resolved"
+      + "\nsize cannot be resolved"
+      + "\n< cannot be resolved"
+      + "\n=> cannot be resolved");
   }
   
   private static void assertArrayEquals(final Object[] expecteds, final Object[] actuals) {
