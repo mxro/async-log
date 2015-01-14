@@ -8,6 +8,7 @@ import de.mxro.async.log.values.StringLog;
 import de.mxro.async.properties.values.PropertyValue;
 import de.mxro.json.HasJSON;
 import de.mxro.json.JSON;
+import de.mxro.json.JSONArray;
 
 public class StringLogData implements PropertyValue, Serializable, StringLog, HasJSON {
 
@@ -48,8 +49,12 @@ public class StringLogData implements PropertyValue, Serializable, StringLog, Ha
 
     @Override
     public JSON getJSON() {
-        final JSON o = JSON.createArray();
+        final JSONArray o = JSON.createArray();
 
-        return null;
+        for (final String entry : entries) {
+            o.push(entry);
+        }
+
+        return o;
     }
 }
