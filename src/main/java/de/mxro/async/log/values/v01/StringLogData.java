@@ -18,7 +18,7 @@ public class StringLogData implements ExplicitInstanceOf, Serializable, StringLo
     private List<String> entries;
 
     @Override
-    public boolean is(final Class<?> type) {
+    public boolean instanceOf(final Class<?> type) {
         return type.equals(StringLog.class);
     }
 
