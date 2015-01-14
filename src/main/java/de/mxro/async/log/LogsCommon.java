@@ -39,7 +39,7 @@ public class LogsCommon extends PropertiesCommon {
     }
 
     public static PropertyOperation<String> string(final Object context, final String message) {
-        return string(context.getClass().getSimpleName() + ":" + Math.abs(System.identityHashCode(context)), message);
+        return string(context.getClass().getName() + ":" + Math.abs(System.identityHashCode(context)), message);
     }
 
     public static Factory<?, ?, ?> createUnsafeLogsFactory() {
