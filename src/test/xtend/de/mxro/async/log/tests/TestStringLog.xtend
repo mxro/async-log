@@ -100,10 +100,9 @@ class TestStringLog {
 		retrievet.join
 		t2.join
 		t2.join
-		t1.join
+		t1.join()
 
-
-		(log.retrieve("log1", StringLog).get.entries.size > 6) => true
+		(log.retrieve("log1", StringLog).get.entries.size > 5) => true
 
 		log.stop.get
 

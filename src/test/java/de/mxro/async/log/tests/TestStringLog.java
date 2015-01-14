@@ -8,6 +8,7 @@ import de.mxro.fn.Success;
 import de.mxro.promise.Promise;
 import de.oehme.xtend.junit.JUnit;
 import java.util.List;
+import org.eclipse.xtext.xbase.lib.Exceptions;
 import org.eclipse.xtext.xbase.lib.IntegerRange;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure0;
 import org.hamcrest.Matcher;
@@ -56,10 +57,99 @@ public class TestStringLog {
   
   @Test
   public void test_multithreading() {
-    throw new Error("Unresolved compilation problems:"
-      + "\nBounds mismatch: The type arguments <Void, Boolean> are not a valid substitute for the bounded type parameters <T, U extends T> of the method operator_doubleArrow(T, U)"
-      + "\nType mismatch: cannot convert from boolean to long"
-      + "\nType mismatch: cannot convert from void to Void");
+    try {
+      final PropertyNode log = Logs.create(18);
+      final Thread t1 = new Thread() {
+        public void run() {
+          try {
+            IntegerRange _upTo = new IntegerRange(1, 20);
+            for (final Integer i : _upTo) {
+              {
+                PropertyOperation<String> _string = Logs.string("log1", ("t1 entry " + i));
+                log.<String>record(_string);
+                Thread.sleep(1);
+                Thread.yield();
+              }
+            }
+          } catch (Throwable _e) {
+            throw Exceptions.sneakyThrow(_e);
+          }
+        }
+      };
+      final Thread t2 = new Thread() {
+        public void run() {
+          try {
+            IntegerRange _upTo = new IntegerRange(1, 20);
+            for (final Integer i : _upTo) {
+              {
+                PropertyOperation<String> _string = Logs.string("log1", ("t2 entry " + i));
+                log.<String>record(_string);
+                Thread.sleep(1);
+                Thread.yield();
+              }
+            }
+          } catch (Throwable _e) {
+            throw Exceptions.sneakyThrow(_e);
+          }
+        }
+      };
+      final Thread t3 = new Thread() {
+        public void run() {
+          try {
+            IntegerRange _upTo = new IntegerRange(1, 20);
+            for (final Integer i : _upTo) {
+              {
+                PropertyOperation<String> _string = Logs.string("log1", ("t3 entry " + i));
+                log.<String>record(_string);
+                Thread.sleep(1);
+                Thread.yield();
+              }
+            }
+          } catch (Throwable _e) {
+            throw Exceptions.sneakyThrow(_e);
+          }
+        }
+      };
+      final Thread retrievet = new Thread() {
+        public void run() {
+          try {
+            IntegerRange _upTo = new IntegerRange(1, 10);
+            for (final Integer i : _upTo) {
+              {
+                Promise<StringLog> _retrieve = log.<StringLog>retrieve("log1", StringLog.class);
+                StringLog _get = _retrieve.get();
+                List<String> _entries = _get.entries();
+                int _size = _entries.size();
+                boolean _lessThan = (_size < 21);
+                TestStringLog.<Boolean, Boolean>operator_doubleArrow(Boolean.valueOf(_lessThan), Boolean.valueOf(true));
+                Thread.sleep(2);
+                Thread.yield();
+              }
+            }
+          } catch (Throwable _e) {
+            throw Exceptions.sneakyThrow(_e);
+          }
+        }
+      };
+      t1.start();
+      t2.start();
+      t3.start();
+      retrievet.start();
+      retrievet.join();
+      t2.join();
+      t2.join();
+      t1.join();
+      Promise<StringLog> _retrieve = log.<StringLog>retrieve("log1", StringLog.class);
+      StringLog _get = _retrieve.get();
+      List<String> _entries = _get.entries();
+      int _size = _entries.size();
+      boolean _greaterThan = (_size > 5);
+      TestStringLog.<Boolean, Boolean>operator_doubleArrow(Boolean.valueOf(_greaterThan), Boolean.valueOf(true));
+      Promise<Success> _stop = log.stop();
+      _stop.get();
+    } catch (Throwable _e) {
+      throw Exceptions.sneakyThrow(_e);
+    }
   }
   
   private static void assertArrayEquals(final Object[] expecteds, final Object[] actuals) {
