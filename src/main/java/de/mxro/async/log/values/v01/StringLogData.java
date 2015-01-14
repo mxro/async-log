@@ -4,9 +4,10 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+import de.mxro.async.log.values.StringLog;
 import de.mxro.async.properties.values.PropertyValue;
 
-public class StringLogData implements PropertyValue, Serializable {
+public class StringLogData implements PropertyValue, Serializable, StringLog {
 
     private static final long serialVersionUID = 1L;
 
@@ -19,19 +20,20 @@ public class StringLogData implements PropertyValue, Serializable {
         return false;
     }
 
+    @Override
     public List<String> entries() {
         return this.entries;
     }
 
+    @Override
     public void add(final String message) {
         if (entries.size() > maxCapacity) {
             final List<String> oldEntries = this.entries;
             this.entries = new ArrayList<String>(maxCapacity);
 
-            for (final int i = Math.round(oldEntries.size() / 2); i < oldEntries.size(); i++) {
-
+            for (int i = Math.round(oldEntries.size() / 2); i < oldEntries.size(); i++) {
+                this.entries.add(oldEntries.get(i));
             }
-
         }
 
         entries.add(message);
