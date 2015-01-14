@@ -6,8 +6,10 @@ import java.util.List;
 
 import de.mxro.async.log.values.StringLog;
 import de.mxro.async.properties.values.PropertyValue;
+import de.mxro.json.HasJSON;
+import de.mxro.json.JSON;
 
-public class StringLogData implements PropertyValue, Serializable, StringLog {
+public class StringLogData implements PropertyValue, Serializable, StringLog, HasJSON {
 
     private static final long serialVersionUID = 1L;
 
@@ -44,4 +46,10 @@ public class StringLogData implements PropertyValue, Serializable, StringLog {
         this.entries = new ArrayList<String>(maxCapacity);
     }
 
+    @Override
+    public JSON getJSON() {
+        final JSON o = JSON.create(); final sdfs
+
+        return null;
+    }
 }
