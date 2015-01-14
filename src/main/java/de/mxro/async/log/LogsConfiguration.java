@@ -14,7 +14,7 @@ public class LogsConfiguration implements Configuration {
         this.maxCapacity = maxCapacity;
     }
 
-    public LogsConfiguration(final int maxCapacity) {
+    public LogsConfiguration() {
         super();
         this.maxCapacity = 20;
     }
