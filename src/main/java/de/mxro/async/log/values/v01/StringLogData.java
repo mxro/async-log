@@ -51,8 +51,8 @@ public class StringLogData implements PropertyValue, Serializable, StringLog, Ha
     public JSON getJSON() {
         final JSONArray o = JSON.createArray();
 
-        for (final String entry : entries) {
-            o.push(entry);
+        for (int i = entries.size() - 1; i >= 0; i++) {
+            o.push(entries.get(i));
         }
 
         return o;
