@@ -23,12 +23,12 @@ public class TestStringLog {
   @Test
   public void test() {
     final PropertyNode log = Logs.create();
-    PropertyOperation _string = Logs.string("log1", "entry 1");
-    log.record(_string);
-    PropertyOperation _string_1 = Logs.string("log1", "entry 2");
-    log.record(_string_1);
-    PropertyOperation _string_2 = Logs.string("log1", "entry 3");
-    log.record(_string_2);
+    PropertyOperation<String> _string = Logs.string("log1", "entry 1");
+    log.<String>record(_string);
+    PropertyOperation<String> _string_1 = Logs.string("log1", "entry 2");
+    log.<String>record(_string_1);
+    PropertyOperation<String> _string_2 = Logs.string("log1", "entry 3");
+    log.<String>record(_string_2);
     Promise<StringLog> _retrieve = log.<StringLog>retrieve("log1", StringLog.class);
     StringLog _get = _retrieve.get();
     List<String> _entries = _get.entries();
@@ -43,8 +43,8 @@ public class TestStringLog {
     final PropertyNode log = Logs.create(20);
     IntegerRange _upTo = new IntegerRange(1, 100);
     for (final Integer i : _upTo) {
-      PropertyOperation _string = Logs.string("log1", ("entry " + i));
-      log.record(_string);
+      PropertyOperation<String> _string = Logs.string("log1", ("entry " + i));
+      log.<String>record(_string);
     }
     Promise<StringLog> _retrieve = log.<StringLog>retrieve("log1", StringLog.class);
     StringLog _get = _retrieve.get();
@@ -66,8 +66,8 @@ public class TestStringLog {
             IntegerRange _upTo = new IntegerRange(1, 20);
             for (final Integer i : _upTo) {
               {
-                PropertyOperation _string = Logs.string("log1", ("t1 entry " + i));
-                log.record(_string);
+                PropertyOperation<String> _string = Logs.string("log1", ("t1 entry " + i));
+                log.<String>record(_string);
                 Thread.sleep(1);
                 Thread.yield();
               }
@@ -83,8 +83,8 @@ public class TestStringLog {
             IntegerRange _upTo = new IntegerRange(1, 20);
             for (final Integer i : _upTo) {
               {
-                PropertyOperation _string = Logs.string("log1", ("t2 entry " + i));
-                log.record(_string);
+                PropertyOperation<String> _string = Logs.string("log1", ("t2 entry " + i));
+                log.<String>record(_string);
                 Thread.sleep(1);
                 Thread.yield();
               }
@@ -100,8 +100,8 @@ public class TestStringLog {
             IntegerRange _upTo = new IntegerRange(1, 20);
             for (final Integer i : _upTo) {
               {
-                PropertyOperation _string = Logs.string("log1", ("t3 entry " + i));
-                log.record(_string);
+                PropertyOperation<String> _string = Logs.string("log1", ("t3 entry " + i));
+                log.<String>record(_string);
                 Thread.sleep(1);
                 Thread.yield();
               }
