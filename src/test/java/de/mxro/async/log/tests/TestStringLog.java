@@ -9,6 +9,7 @@ import de.mxro.promise.Promise;
 import de.oehme.xtend.junit.JUnit;
 import java.util.List;
 import org.eclipse.xtext.xbase.lib.Exceptions;
+import org.eclipse.xtext.xbase.lib.InputOutput;
 import org.eclipse.xtext.xbase.lib.IntegerRange;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure0;
 import org.hamcrest.Matcher;
@@ -58,7 +59,7 @@ public class TestStringLog {
   @Test
   public void test_multithreading() {
     try {
-      final PropertyNode log = Logs.create(20);
+      final PropertyNode log = Logs.create(19);
       final Thread t1 = new Thread() {
         public void run() {
           try {
@@ -139,6 +140,9 @@ public class TestStringLog {
       t2.join();
       t2.join();
       t1.join();
+      Promise<Object> _retrieve = log.retrieve("log1");
+      Object _get = _retrieve.get();
+      InputOutput.<Object>println(_get);
       Promise<Success> _stop = log.stop();
       _stop.get();
     } catch (Throwable _e) {

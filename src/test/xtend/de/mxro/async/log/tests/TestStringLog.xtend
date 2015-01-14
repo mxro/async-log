@@ -42,7 +42,7 @@ class TestStringLog {
 	@Test
 	def void test_multithreading() {
 
-		val log = Logs.create(20)
+		val log = Logs.create(19)
 
 		val t1 = new Thread() {
 
@@ -101,6 +101,9 @@ class TestStringLog {
 		t2.join
 		t2.join
 		t1.join
+
+
+		println(log.retrieve("log1").get)
 
 		log.stop.get
 
