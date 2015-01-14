@@ -16,8 +16,7 @@ public class StringLogData implements PropertyValue, Serializable, StringLog {
 
     @Override
     public boolean is(final Class<?> type) {
-        // TODO Auto-generated method stub
-        return false;
+        return type.equals(StringLog.class);
     }
 
     @Override
