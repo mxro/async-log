@@ -34,7 +34,7 @@ public class Logs extends LogsCommon {
             @Override
             public PropertyNode create(final LogsConfiguration conf, final Dependencies dependencies) {
 
-                return Logs.create();
+                return Logs.create(conf.getMaxCapacity());
             }
 
         };
