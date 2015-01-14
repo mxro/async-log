@@ -4,6 +4,7 @@ import de.mxro.async.log.internal.LogFactory;
 import de.mxro.async.properties.PropertiesCommon;
 import de.mxro.async.properties.PropertyFactory;
 import de.mxro.async.properties.PropertyNode;
+import de.mxro.async.properties.PropertyOperation;
 
 /**
  * <p>
@@ -21,6 +22,10 @@ public class LogCommon extends PropertiesCommon {
 
     public static PropertyFactory logFactory() {
         return new LogFactory();
+    }
+
+    public PropertyOperation entry(final String message) {
+
     }
 
 }
