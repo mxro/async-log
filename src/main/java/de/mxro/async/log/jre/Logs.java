@@ -9,7 +9,12 @@ public class Logs extends LogsCommon {
 
     public static PropertyNode create() {
         final int defaultMaxCapacity = 20;
+        return create(defaultMaxCapacity);
+    }
+
+    public static PropertyNode create(final int capacity) {
+
         return Properties.create(PropertiesCommon.compositeFactory(PropertiesCommon.defaultFactory(),
-                logFactory(defaultMaxCapacity)));
+                logFactory(capacity)));
     }
 }

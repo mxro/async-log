@@ -39,7 +39,7 @@ public class TestStringLog {
   
   @Test
   public void test_overflow() {
-    final PropertyNode log = Logs.createUnsafe(20);
+    final PropertyNode log = Logs.create(20);
     IntegerRange _upTo = new IntegerRange(1, 100);
     for (final Integer i : _upTo) {
       PropertyOperation<String> _string = Logs.string("log1", ("entry " + i));
@@ -64,7 +64,7 @@ public class TestStringLog {
   @Test
   public void test_multithreading() {
     try {
-      final PropertyNode log = Logs.createUnsafe(18);
+      final PropertyNode log = Logs.create(18);
       final Thread t1 = new Thread() {
         public void run() {
           try {
