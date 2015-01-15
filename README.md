@@ -61,7 +61,7 @@ A custom limit can be set by passing an integer to the logs constructor method:
 PropertyNode limitedLog = Logs.create(20);
 ```
 
-### Maven Dependency
+## Maven Dependency
 
 ```xml
 <dependency>
