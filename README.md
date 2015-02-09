@@ -71,7 +71,7 @@ PropertyNode limitedLog = Logs.create(20);
 </dependency>
 ```
 
-Find latest version [here](http://modules.appjangle.com/lightweight-java-metrics/latest/project-summary.html).
+Find latest version [here](http://modules.appjangle.com/async-log/latest/project-summary.html).
 
 Add repository if required:
 
