@@ -66,6 +66,7 @@ public class TestStringLog {
     try {
       final PropertyNode log = Logs.create(18);
       final Thread t1 = new Thread() {
+        @Override
         public void run() {
           try {
             IntegerRange _upTo = new IntegerRange(1, 20);
@@ -83,6 +84,7 @@ public class TestStringLog {
         }
       };
       final Thread t2 = new Thread() {
+        @Override
         public void run() {
           try {
             IntegerRange _upTo = new IntegerRange(1, 20);
@@ -100,6 +102,7 @@ public class TestStringLog {
         }
       };
       final Thread t3 = new Thread() {
+        @Override
         public void run() {
           try {
             IntegerRange _upTo = new IntegerRange(1, 20);
@@ -117,6 +120,7 @@ public class TestStringLog {
         }
       };
       final Thread retrievet = new Thread() {
+        @Override
         public void run() {
           try {
             IntegerRange _upTo = new IntegerRange(1, 10);
