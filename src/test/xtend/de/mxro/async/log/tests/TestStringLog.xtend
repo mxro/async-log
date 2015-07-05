@@ -22,6 +22,7 @@ class TestStringLog {
 		log.stop.get
 
 	}
+	
 
 	@Test
 	def void test_overflow() {
