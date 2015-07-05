@@ -5,6 +5,8 @@ import de.mxro.async.log.values.StringLog
 import de.oehme.xtend.junit.JUnit
 import org.junit.Test
 
+import static extension de.mxro.async.log.tests.TestStringLog.*
+
 @JUnit
 class TestStringLog {
 

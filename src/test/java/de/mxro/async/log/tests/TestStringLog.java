@@ -1,13 +1,9 @@
 package de.mxro.async.log.tests;
 
-import de.mxro.async.log.jre.Logs;
-import de.mxro.async.log.values.StringLog;
-import de.mxro.async.properties.PropertyNode;
-import de.mxro.async.properties.PropertyOperation;
-import de.mxro.promise.Promise;
-import de.oehme.xtend.junit.JUnit;
 import delight.functional.Success;
+
 import java.util.List;
+
 import org.eclipse.xtext.xbase.lib.Exceptions;
 import org.eclipse.xtext.xbase.lib.IntegerRange;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure0;
@@ -15,6 +11,13 @@ import org.hamcrest.Matcher;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.internal.ArrayComparisonFailure;
+
+import de.mxro.async.log.jre.Logs;
+import de.mxro.async.log.values.StringLog;
+import de.mxro.async.properties.PropertyNode;
+import de.mxro.async.properties.PropertyOperation;
+import de.mxro.promise.Promise;
+import de.oehme.xtend.junit.JUnit;
 
 @JUnit
 @SuppressWarnings("all")
