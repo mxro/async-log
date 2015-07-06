@@ -1,8 +1,9 @@
 package de.mxro.async.log.examples;
 
+import delight.async.properties.PropertyNode;
+
 import de.mxro.async.log.jre.Logs;
 import de.mxro.async.log.values.StringLog;
-import de.mxro.async.properties.PropertyNode;
 
 public class WriteAndReadLog {
 

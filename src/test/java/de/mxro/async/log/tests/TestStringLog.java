@@ -2,9 +2,9 @@ package de.mxro.async.log.tests;
 
 import de.mxro.async.log.jre.Logs;
 import de.mxro.async.log.values.StringLog;
-import de.mxro.async.properties.PropertyNode;
-import de.mxro.async.properties.PropertyOperation;
 import de.oehme.xtend.junit.JUnit;
+import delight.async.properties.PropertyNode;
+import delight.async.properties.PropertyOperation;
 import delight.functional.Success;
 import delight.promise.Promise;
 import java.util.List;

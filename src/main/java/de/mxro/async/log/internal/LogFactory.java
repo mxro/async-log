@@ -1,8 +1,9 @@
 package de.mxro.async.log.internal;
 
+import delight.async.properties.PropertyFactory;
+
 import de.mxro.async.log.values.StringLog;
 import de.mxro.async.log.values.v01.StringLogData;
-import de.mxro.async.properties.PropertyFactory;
 
 public class LogFactory implements PropertyFactory {
 

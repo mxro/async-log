@@ -1,11 +1,12 @@
 package de.mxro.async.log.values.v01;
 
+import delight.async.properties.values.ExplicitInstanceOf;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 import de.mxro.async.log.values.StringLog;
-import de.mxro.async.properties.values.ExplicitInstanceOf;
 import de.mxro.json.JSON;
 import de.mxro.json.JSONArray;
 import de.mxro.json.ToJSON;

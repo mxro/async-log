@@ -1,15 +1,15 @@
 package de.mxro.async.log;
 
+import delight.async.properties.PropertiesCommon;
+import delight.async.properties.PropertyFactory;
+import delight.async.properties.PropertyNode;
+import delight.async.properties.PropertyOperation;
 import delight.factories.Configuration;
 import delight.factories.Dependencies;
 import delight.factories.Factory;
 
 import de.mxro.async.log.internal.LogFactory;
 import de.mxro.async.log.internal.operations.WriteEntryOperation;
-import de.mxro.async.properties.PropertiesCommon;
-import de.mxro.async.properties.PropertyFactory;
-import de.mxro.async.properties.PropertyNode;
-import de.mxro.async.properties.PropertyOperation;
 
 /**
  * <p>
