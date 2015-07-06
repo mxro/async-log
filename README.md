@@ -1,3 +1,7 @@
+# PROJECT MOVED
+
+This project has moved to [javadelight/delight-log](https://github.com/javadelight/delight-log).
+
 # Async Log
 
 [Async Log](https://github.com/mxro/async-log) is a minimal implementation for asynchronous logging in Java.
